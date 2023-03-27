@@ -1,0 +1,23 @@
+current directory: /home/dan/Development/projects/safariflights/vendor/bundle/ruby/3.0.0/gems/io-console-0.6.0/ext/io/console
+/home/dan/.rbenv/versions/3.0.0/bin/ruby -I /home/dan/.rbenv/versions/3.0.0/lib/ruby/site_ruby/3.0.0 extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... no
+checking for rb_scheduler_timeout()... no
+creating Makefile
+
+current directory: /home/dan/Development/projects/safariflights/vendor/bundle/ruby/3.0.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230327-69651-83nnvr sitelibdir\=./.gem.20230327-69651-83nnvr clean
+
+current directory: /home/dan/Development/projects/safariflights/vendor/bundle/ruby/3.0.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230327-69651-83nnvr sitelibdir\=./.gem.20230327-69651-83nnvr
+compiling console.c
+linking shared-object io/console.so
+
+current directory: /home/dan/Development/projects/safariflights/vendor/bundle/ruby/3.0.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230327-69651-83nnvr sitelibdir\=./.gem.20230327-69651-83nnvr install
+/bin/install -c -m 0755 console.so ./.gem.20230327-69651-83nnvr/io
+
+current directory: /home/dan/Development/projects/safariflights/vendor/bundle/ruby/3.0.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230327-69651-83nnvr sitelibdir\=./.gem.20230327-69651-83nnvr clean

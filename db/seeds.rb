@@ -9,9 +9,9 @@ Flight.create(destination: "Nairobi", from: "Mombasa", duration: "45minutes", de
 Flight.create(destination: "Nairobi", from: "Mombasa", duration: "45minutes", departure: "06th January", cost: "10000")
 Flight.create(destination: "Nairobi", from: "Mombasa", duration: "45minutes", departure: "06th January", cost: "10000")
 
-Review.create(user_id_id:1, rating:3.9)
-Review.create(user_id_id:2, rating:4.9)
-Review.create(user_id_id:3, rating:2.9)
+Review.create(user_id:1, rating:3.9)
+Review.create(user_id:2, rating:4.9)
+Review.create(user_id:3, rating:2.9)
 
 Booking.create(flight_id:1, user_id:1)
 Booking.create(flight_id:2, user_id:2)

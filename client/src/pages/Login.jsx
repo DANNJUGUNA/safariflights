@@ -2,6 +2,7 @@ import React from 'react'
 
 const Login = () => {
   return (
+
     <div className=' bg-white py-4 mt-1 mx-5 rounded-lg'>
     <div className='bg-[#160194]  opacity-80 w-[70%] h-[90%] rounded-lg flex flex-col items-center ml-auto mr-auto mt-2 p-20'>
     <form className='bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-full'>
@@ -23,6 +24,7 @@ const Login = () => {
     </form>
   </div>
   </div>
+
   )
 }
 

@@ -172,9 +172,15 @@ DEPENDENCIES
 RUBY VERSION
 
 
-   ruby 2.7.4
+
+
+
+   ruby 3.0.2p107
+
+
+
 
 
 
 BUNDLED WITH
-   2.4.6
+   2.4.7

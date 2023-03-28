@@ -6,9 +6,9 @@ import Navbar from '../navbar/Navbar'
 const Layout = () => {
   return (
     <>
-    <Navbar/>
+    <Navbar />
     <div className='min-h-[90vh]'>
-       <Outlet/>
+      <Outlet/>
     </div>
     <Footer/>
     </>

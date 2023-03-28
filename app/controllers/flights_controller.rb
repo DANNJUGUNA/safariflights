@@ -36,5 +36,6 @@ class FlightsController < ApplicationController
     end
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :render_unprocessable_entity_response
+
     end
 end

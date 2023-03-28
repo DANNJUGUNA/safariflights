@@ -9,6 +9,10 @@ const Login = () => {
           <label htmlFor="username" className="block text-black text-lg font-bold mb-2">Username</label>
           <input type="text" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder='Username' />
         </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-black text-lg font-bold mb-2">Email</label>
+          <input type="email" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder='aaa@gmail.com' />
+        </div>
         <div className="mt-4">
           <label htmlFor="password" className="block text-back text-lg font-bold mb-2">Password</label>
           <input type="password" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" />

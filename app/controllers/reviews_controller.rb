@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def index 
       review=Review.all
       render json: review
@@ -29,4 +30,6 @@ class ReviewsController < ApplicationController
     params.permit( :rating)
   end
 
+
 end
+

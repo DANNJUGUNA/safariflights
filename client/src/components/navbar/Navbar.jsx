@@ -11,7 +11,8 @@ const Navbar = () => {
         <div className=' text-white font-semibold flex justify-between gap-6 mr-5' >
             <Link to='/'>Home</Link>
             <li >About us</li>
-            <li> Flights</li>
+            {/* <li> Flights</li> */}
+            <Link to='/flight'> Flights</Link>
             <li >Bookings</li>
             <li >Sign up</li>
             <Link to='/login'>Log in</Link>

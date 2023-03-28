@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 
 
-ruby "3.0.2"
+ruby "2.7.6"
 
 
 
@@ -34,5 +34,5 @@ group :development do
   # gem "spring"
 end
 
-gem 'active_model_serializers'
+
 

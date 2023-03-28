@@ -9,8 +9,13 @@ class FlightsController < ApplicationController
     end
     def show
         flight=find_flight
-        render json: flight
+        if flight
+            render json: flight
+        else
+            render json: { error: "Flight not found" }, status: :not_found
+        end
     end
+
     def create
         flight=Flight.create!(permited_params)
         render json: flight,status: :created

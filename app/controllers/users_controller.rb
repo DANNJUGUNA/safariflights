@@ -10,6 +10,13 @@ class UsersController < ApplicationController
         render json: users
     end
 
+    def show
+        user = User.find(params[:id])
+        if user
+            render json: user
+        else
+            render json: render_not_found_response
+    end
     def loggedin
         user = User.find_by(id: session[:user_id])
         if(user)
@@ -30,10 +37,6 @@ class UsersController < ApplicationController
         render json: user
     end
 
-    def show
-        user = find_user
-        render json: user
-    end
 
     # def destroy
     #     user = find_user

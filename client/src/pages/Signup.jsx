@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Signup = () => {
   return (
     <div className='bg-white py-4 mx-5 rounded-3xl mb-1 mt-1 w-[80%] ml-auto mr-auto'>
-      <div className='bg-[#160194] opacity-80 w-[50%] rounded-3xl flex flex-col items-center ml-auto mr-auto mt-2 p-20'>
+      <div className='bg-[#160194] opacity-80 w-[500px] h-[650px] rounded-3xl flex flex-col items-center ml-auto mr-auto mt-2 p-20'>
         <form className='bg-white shadow-lg  rounded-3xl px-8 pt-3 pb-3 mb-3 w-full'>
           <div >
             <label htmlFor="username" className="block text-black text-lg font-bold mb-2">Username</label>

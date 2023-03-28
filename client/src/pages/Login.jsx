@@ -1,10 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Signup from './Signup'
 
 const Login = () => {
   return (
-
     <div className=' bg-white py-4 mt-1 mx-5 mb-1 rounded-3xl w-[80%] ml-auto mr-auto'>
       <div className='bg-[#160194]  opacity-80 w-[500px] h-[90%] rounded-3xl flex flex-col items-center ml-auto mr-auto mt-2 p-20'>
         <form className='bg-white shadow-md rounded-3xl px-8 pt-6 pb-6 mb-4 w-full'>

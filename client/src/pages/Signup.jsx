@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Login = () => {
+const Signup = () => {
   return (
     <div className='bg-white py-4 mx-5 rounded-3xl mb-1 mt-1 w-[80%] ml-auto mr-auto'>
       <div className='bg-[#160194] opacity-80 w-[50%] rounded-3xl flex flex-col items-center ml-auto mr-auto mt-2 p-20'>
@@ -31,8 +31,9 @@ const Login = () => {
           <p className="font-bold text-center text-gray-500 text-xs mt-1 mb-1 p-3">&copy;2023 <Link to="/">SAFARI<span className='text-[#E99B04]'>FLIGHTS</span></Link> All rights reserved.</p>
         </form>
       </div>
+
     </div>
   )
 }
 
-export default Login
+export default Signup

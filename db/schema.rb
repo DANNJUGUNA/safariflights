@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_095404) do
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
 
+
   create_table "flights", force: :cascade do |t|
     t.string "destination"
     t.string "from"
@@ -51,8 +52,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_095404) do
 
   add_foreign_key "bookings", "flights"
   add_foreign_key "bookings", "users"
-  add_foreign_key "reviews", "users"
-
-
-
+  add_foreign_key "reviews", "users
 end

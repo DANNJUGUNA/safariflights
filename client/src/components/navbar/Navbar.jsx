@@ -10,10 +10,10 @@ const Navbar = () => {
         {/* {navigation Linknks} */}
         <div className=' text-white font-semibold flex justify-between gap-6 mr-5' >
             <Link to='/'>Home</Link>
-            <li >About us</li>
-            <li> Flights</li>
-            <li >Bookings</li>
-            <li >Sign up</li>
+            <Link to=''>About us</Link>
+            <Link to=''> Flights</Link>
+            <Link to=''>Bookings</Link>
+            <Link to='/signup'>Sign up</Link>
             <Link to='/login'>Log in</Link>
         </div>
     </nav>

@@ -5,11 +5,11 @@ class BookingsController < ApplicationController
     end
 
     def show
-        @booking = Booking.find_by(id: params[:id])
+        @booking = Booking.includes(:user, :flight).find_by(id: params[:id])
         if @booking
-            render json: @booking, only: [:flight_id, :user_id]
+        render json: @booking, include: { flight: {} }, except: [:flight_id], status: :ok
         else
-            render json: { error: "Booking Not found" }, status: :not_found
+        render json: { error: "Booking Not found" }, status: :not_found
         end
     end
 

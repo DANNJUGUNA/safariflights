@@ -17,11 +17,11 @@ const Login = () => {
         <div/>
         <div className="mt-4">
           <label htmlFor="password" className="block text-back text-lg font-bold mb-2">Password</label>
-          <input type="password" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+          <input type="password" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline"  placeholder='password'/>
         </div>
         <div className=" mt-2">
           <label htmlFor="password" className="block text-black text-lg font-bold mb-2">Confirm Password</label>
-          <input type="password" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+          <input type="password" className="shadow appearance-none border border-[#160194] rounded-3xl w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder='password' />
 
         </div>
         <div className="flex items-center flex-col">

@@ -4,8 +4,8 @@ const Login = () => {
   return (
 
     <div className=' bg-white py-4 mt-1 mx-5 mb-1 rounded-3xl'>
-    <div className='bg-[#160194]  opacity-80 w-[50%] h-[90%] rounded-3xl flex flex-col items-center ml-auto mr-auto mt-2 p-20'>
-    <form className='bg-white shadow-md rounded-3xl px-8 pt-6 pb-6 mb-4 w-full'>
+    <div className='bg-[#160194] opacity-80 w-[50%] h-[90%] rounded-3xl flex flex-wrap flex-col items-center ml-auto mr-auto mt-2 p-20'>
+    <form className='bg-white shadow-md rounded-3xl px-8 pt-6 pb-6 mb-4 w-full relative'>
       <div className="mb-4">
         <label htmlFor="username" className="block text-black text-lg font-bold mb-2">Username</label>
         <input type="text" className="shadow appearance-none border border-[#160194] outline-none rounded-3xl w-full py-2 px-3 text-black leading-tight focus:outile-none focus:shadow-outline" placeholder='Username' />

@@ -1,3 +1,3 @@
 class FlightSerializer < ActiveModel::Serializer
-  attributes :destination,:from,:duration,:departure,:cost
+  attributes :id,:destination,:from,:duration,:departure,:cost
 end

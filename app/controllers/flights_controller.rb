@@ -25,7 +25,9 @@ class FlightsController < ApplicationController
         flight.destroy
         head :no_content
     end
+
     private 
+    
     def permited_params
         params.permit(:destination,:from,:duration,:departure,:cost)
     end

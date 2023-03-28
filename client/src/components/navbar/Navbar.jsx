@@ -11,10 +11,10 @@ const Navbar = () => {
         <div className=' text-white font-semibold flex justify-between gap-6 mr-5' >
             <Link to='/'>Home</Link>
             <Link to=''>About us</Link>
-            <Link to=''> Flights</Link>
-            <Link to=''>Bookings</Link>
+            <Link to=''>Flights</Link>
+            <Link to='/bookings'>Bookings</Link>
             <Link to='/signup'>Sign up</Link>
-            <Link to='/login'>Log in</Link>
+            <Link to='/login'>Login</Link>
         </div>
     </nav>
   )

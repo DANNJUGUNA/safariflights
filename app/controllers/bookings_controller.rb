@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
     def index
-        bookings = Booking.all
-        render json: bookings, only: [:flight_id, :user_id]
+        bookings = Booking.includes(:user, :flight)
+        render json: bookings, include: { flight: {} }, except: [:flight_id], status: :ok
     end
 
     def show
@@ -25,4 +25,6 @@ class BookingsController < ApplicationController
     def booking_params
         params.require(:booking).permit(:flight_id, :user_id)
     end
+
 end
+

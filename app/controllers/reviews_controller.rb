@@ -1,15 +1,35 @@
 class ReviewsController < ApplicationController
-    def index
-        @reviews = Review.all
-        render json: @reviews, only: [:rating, :user_id]
+
+  def index 
+      review=Review.all
+      render json: review
+  end
+
+  def show
+      review= find_review
+      render json:review
+  end
+  
+  def create
+      render json: Review.create!(review_params)
     end
 
-    def show
-        @review = Review.find_by(id: params[:id])
-        if @review
-            render json: @review.as_json
-        else
-            render json: { error: "Review Not found" }, status: :not_found
-        end
-    end
+    def update
+      review = find_review
+      review.update!(review_params)
+    end 
+
+
+  private
+  
+  def find_review
+      Review.find( params[:id])
+   end
+
+   def review_params
+    params.permit( :rating)
+  end
+
+
 end
+

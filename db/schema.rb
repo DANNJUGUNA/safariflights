@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_095404) do
-
-
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_182625) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "flight_id", null: false
@@ -22,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_095404) do
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
-
+  end
 
   create_table "flights", force: :cascade do |t|
     t.string "destination"
@@ -52,5 +48,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_095404) do
 
   add_foreign_key "bookings", "flights"
   add_foreign_key "bookings", "users"
-  add_foreign_key "reviews", "users
+  add_foreign_key "reviews", "users"
 end

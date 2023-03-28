@@ -10,7 +10,7 @@ const Login = () => {
         </div>
         <div className="mt-4">
           <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-          <input type="email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outile-none focus:shadow-outline" placeholder='Email' />
+          <input type="email" className="shadow appearance-none border-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder='Email' />
         </div>
         <div className="mt-4">
           <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password</label>

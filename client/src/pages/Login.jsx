@@ -17,6 +17,7 @@ console.log(password)
 }
   return (
 
+
     <div className=' bg-white py-4 mt-1 mx-5 mb-1 rounded-3xl'>
     <div className='bg-[#160194] opacity-80 w-[50%] h-[90%] rounded-3xl flex flex-wrap flex-col items-center ml-auto mr-auto mt-2 p-20'>
     <form  onSubmit={handleSubmit}
@@ -42,6 +43,7 @@ console.log(password)
     </form>
   </div>
   </div>
+
 
   )
 }

@@ -22,6 +22,14 @@ class BookingsController < ApplicationController
         end
     end
 
+    def destroy
+        booking = Booking.find_by(id: params[:id])
+        booking.destroy
+        head :no_content
+    end
+
+    private
+
     def booking_params
         params.require(:booking).permit(:flight_id, :user_id)
     end

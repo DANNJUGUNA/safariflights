@@ -8,11 +8,13 @@ import Aboutus from "./pages/Aboutus";
 import Signup from "./pages/Signup";
 import Booking from './pages/Booking'
 import AuthProvider from "./context/Authcontext";
+import FlightsProvider from "./context/Flightscontext";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <FlightsProvider>
       <Routes>
           <Route path="/" element={<Layout/>}>
             <Route index element={<Home/>}/>
@@ -23,6 +25,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
           </Route>
       </Routes>
+      </FlightsProvider>
       </AuthProvider>
     </BrowserRouter>
     

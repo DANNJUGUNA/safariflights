@@ -16,7 +16,9 @@ class UsersController < ApplicationController
             render json: user
         else
             render json: render_not_found_response
+        end
     end
+
     def loggedin
         user = User.find_by(id: session[:user_id])
         if(user)
@@ -44,9 +46,11 @@ class UsersController < ApplicationController
     # end
         
     private
+
     def find_user
         User.find(params[:id])
     end
+    
     def user_params
         params.permit(:username, :email, :password_digest)
     end

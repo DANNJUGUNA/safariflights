@@ -1,5 +1,17 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../context/Authcontext';
+import { BookingsContext } from '../context/Bookingcontext';
 function Booking(){
+    const{user}=useContext(AuthContext)
+    const{bookings}=useContext(BookingsContext)
+    if (user&&user.loggedin){
+        console.log(bookings.user)
+    }
+    else{
+        console.log("errors")
+    }
+
     return(
        
         <div className='container mx-auto min-h-[80vh]'>

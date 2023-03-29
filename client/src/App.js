@@ -9,12 +9,14 @@ import Signup from "./pages/Signup";
 import Booking from './pages/Booking'
 import AuthProvider from "./context/Authcontext";
 import FlightsProvider from "./context/Flightscontext";
+import BookingsProvider from "./context/Bookingcontext";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <FlightsProvider>
+          <BookingsProvider>
       <Routes>
           <Route path="/" element={<Layout/>}>
             <Route index element={<Home/>}/>
@@ -25,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
           </Route>
       </Routes>
+      </BookingsProvider>
       </FlightsProvider>
       </AuthProvider>
     </BrowserRouter>

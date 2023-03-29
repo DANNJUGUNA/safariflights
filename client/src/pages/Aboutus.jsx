@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Aboutus = () => {
   return (
     <div className='m-5 '>

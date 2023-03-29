@@ -12,9 +12,13 @@ Rails.application.routes.draw do
  
   resources :reviews
   resources :bookings
+
+
   get '/users',to: 'users#index'
   get '/loggedin',to: 'users#loggedin'
   post '/users',to:'users#create'
+
+  
   post'/login', to: "session#login"
   delete '/logout', to: "session#logout"
   # post '/users', to: 'users#create'

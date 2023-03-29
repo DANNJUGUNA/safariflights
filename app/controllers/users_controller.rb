@@ -1,24 +1,9 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :index, :show. :destroy, :uodate]
-
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-
-    
+    skip_before_action :authorize, only: [:create] 
     def index
         users = User.all
         render json: users
     end
-
-    def show
-        user = User.find(params[:id])
-        if user
-            render json: user
-        else
-            render json: render_not_found_response
-        end
-    end
-
     def loggedin
         user = User.find_by(id: session[:user_id])
         if(user)
@@ -30,20 +15,21 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
-        render json: { "Success": "User saved successfully!"}, status: :created
+        if user.valid?
+            render json: { "success": "User saved successfully!"}
+        else
+            render json: user.errors.messages
+        end
     end
 
-    def update
-        user = find_user
-        user.update!(user_params)
-        render json: user
-    end
-
-
-    # def destroy
+    # def update
     #     user = find_user
-    #     user.destroy
+    #     user.update!(user_params)
+    #     render json: user
     # end
+
+
+  
         
     private
 
@@ -52,14 +38,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:username, :email, :password_digest)
+        params.permit(:username, :email, :password)
     end
 
-    def render_not_found_response
-        render json: { error: "User not found" }, status: :not_found
-    end
-
-    def render_unprocessable_entity_response(invalid)
-        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
-    end
+  
 end

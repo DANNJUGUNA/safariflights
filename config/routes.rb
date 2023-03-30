@@ -11,25 +11,19 @@ Rails.application.routes.draw do
   # root "articles#index"
  
   resources :reviews
-  resources :bookings
+  resources :bookings, only: [:index, :show]
   resources :users, only: [:create]
   post "/login", to: "users#login"
+  delete "/logout", to: "users#logout"
+  # get '/bookings', to: 'users#bookings'
   
 
-  # get '/users',to: 'users#index'
-  # get '/loggedin',to: 'users#loggedin'
+  
    
-      # post '/users',to:'users#create'
-      # post'/login', to: "session#login"
-      # get '/loggedin',to: 'users#loggedin'
-      # get '/users',to: 'users#index'
+      
 
   
   
-  # delete '/logout', to: "session#logout"
-  # post '/users', to: 'users#create'
-  # post '/users', to: 'users#create'
-  # post '/users', to: 'users#create'
-  # post '/users', to: 'users#create'
+  
 
 end

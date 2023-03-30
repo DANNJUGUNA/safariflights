@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-    skip_before_action :authorize,only:[:index]
+    skip_before_action :authorized,only:[:index]
     def index
         flights=Flight.all 
         render json: flights 

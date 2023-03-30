@@ -34,6 +34,17 @@ class ApplicationController < ActionController::API
     !!current_user
   end
 
+  def authorized(booking_id)
+    booking = Booking.find(booking_id)
+    unless current_user_bookings.include?(booking)
+      render json: { error: 'You are not authorized to access this booking' }, status: :unauthorized
+    end
+  end
+
+  def current_user_bookings
+    current_user.bookings
+  end
+private
   def authorized
     render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
   end

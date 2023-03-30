@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "articles#index"
  
   resources :reviews
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show, :create]
   resources :users, only: [:create]
   post "/login", to: "users#login"
   delete "/logout", to: "users#logout"

@@ -9,6 +9,7 @@ import Flight from "./pages/Flight";
 import Aboutus from "./pages/Aboutus";
 
 import Signup from "./pages/Signup";
+import Review from "./pages/Review";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
 
           <Route index element={<Home/>} />
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/review" element={<Review/>}/>
+
         
         </Route>
       </Routes>

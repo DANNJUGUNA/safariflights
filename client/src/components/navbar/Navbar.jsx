@@ -1,6 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import {Link} from 'react-router-dom'
+ import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <nav className=' mx-4 pb-1 flex flex-wrap justify-between items-center px-5 min-h-[15vh] border-b-2 border-white'  >
@@ -18,6 +17,7 @@ const Navbar = () => {
             <Link to='/bookings'>Bookings</Link>
             <Link to='/signup'>Sign up</Link>
             <Link to='/login'>Log in</Link>
+            <Link to='/review'>Review</Link>
         </div>
     </nav>
   )

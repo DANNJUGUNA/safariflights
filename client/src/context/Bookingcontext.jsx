@@ -3,7 +3,9 @@ import {useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2"
 
 
+
 export const BookingsContext = createContext();
+
 
 
 
@@ -13,7 +15,7 @@ function BookingsProvider({children}){
     const [change, setOnChange] = useState(false)
 //Adding bookings
 const AddBookings = (flight_id, user_id) =>{
-fetch ("/bookings",{
+fetch (`/bookings`,{
     method: "POST",
     headers:{
         "Content-Type": "application/json"

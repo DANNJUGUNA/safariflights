@@ -14,12 +14,22 @@ Rails.application.routes.draw do
   resources :bookings
 
 
-  get '/users',to: 'users#index'
-  get '/loggedin',to: 'users#loggedin'
-  post '/users',to:'users#create'
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:create]
+      post '/users',to:'users#create'
+      post'/login', to: "session#login"
+      get '/loggedin',to: 'users#loggedin'
+      get '/users',to: 'users#index'
+    end
+  end
+
+  # get '/users',to: 'users#index'
+  # get '/loggedin',to: 'users#loggedin'
+  
 
   
-  post'/login', to: "session#login"
+  
   delete '/logout', to: "session#logout"
   # post '/users', to: 'users#create'
   # post '/users', to: 'users#create'

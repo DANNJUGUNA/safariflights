@@ -8,7 +8,7 @@ function Review() {
     Swal.fire({
       title: 'Leave a Review',
       text: 'Please share your feedback',
-      // input: 'textarea',
+      //  input: 'textarea',
       // inputPlaceholder: 'Write your review here...',
       confirmButtonText: 'Submit',
       showCancelButton: true,

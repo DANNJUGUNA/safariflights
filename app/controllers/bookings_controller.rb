@@ -1,19 +1,6 @@
 class BookingsController < ApplicationController
     before_action :authorized
-    # def index
-    #     bookings = Booking.includes(:user, :flight)
-    #     render json: bookings, include: { flight: {} }, except: [:flight_id], status: :ok
-    # end
-    
-
-    # def show
-    #     @booking = Booking.find_by(id: params[:id])
-    #     if @booking
-    #         render json: @booking, only: [:flight_id, :user_id]
-    #     else
-    #         render json: { error: "Booking Not found" }, status: :not_found
-    #     end
-    # end
+   
     def index
         render json: current_user_bookings
       end

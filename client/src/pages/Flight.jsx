@@ -6,7 +6,7 @@ import { FlightContext } from '../context/Flightscontext';
 function Flight () {
   const{flights}=useContext(FlightContext)
   const {user}=useContext(AuthContext)
-  console.log('user:', user);
+  
   return(
  <div>
    <p className='flex items-center justify-center text-2xl mt-2 font-bold text-white underline underline-offset-8'>

@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {useNavigate } from 'react-router-dom';
+// import {useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/Authcontext';
 import Swal from "sweetalert2"
 
 
@@ -10,9 +11,10 @@ export const BookingsContext = createContext();
 
 
 function BookingsProvider({children}){
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [bookings, setBookings] = useState()
     const [change, setOnChange] = useState(false)
+    const { token } = useContext(AuthContext);
 //Adding bookings
 const AddBookings = (flight_id, user_id) =>{
 fetch (`/bookings`,{
@@ -36,7 +38,7 @@ if (response.errors){
 }else if(response.sucess){
     Swal.fire({
         position: 'center',
-        icon: 'Booked successfully',
+        icon: 'success',
         title: response.success,
         timer: 1500
     })
@@ -52,24 +54,26 @@ if (response.errors){
 
 }
 
+  // Fetching bookings
+  useEffect(() => {
+    if (token) {
+      fetch('/bookings', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          setBookings(response);
+          console.log(response);
+        });
+    }
+  }, [change, token]);
 
 
 
-//fetching bookings
-    useEffect(()=>{
-        fetch ("/bookings",{
-            method: "GET",
-            headers:{
-                "Content-Type": "application/json"
-            },
-        })
-        .then(res=>res.json())
-        .then(response=>{
-            setBookings(response)
-            console.log(response)
-        }
-        )
-    }, [change])
 
 //Deleting a booking
 

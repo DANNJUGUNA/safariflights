@@ -68,14 +68,126 @@ const createBooking = async (flight_id) => {
 
 
 //Deleting a booking
+// const handleDelete = async (bookingId) => {
+//   try {
+//     const response = await fetch(`/bookings/${bookingId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Authorization': `Bearer ${localStorage.getItem('token')}`
+//       }
+//     });
+//     if (response.ok) {
+//       setBookings(bookings.filter(booking => booking.id !== bookingId));
+//     } else {
+//       const error = await response.json();
+//       console.log(error);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// const handleDelete = async (bookingId) => {
+//   if (!user) {
+//     throw new Error('You must be logged in to delete a booking.');
+//   }
+
+//   try {
+//     const response = await fetch(`/bookings/${bookingId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Authorization': `Bearer ${token}`
+//       }
+//     });
+//     if (response.ok) {
+//       setBookings(bookings.filter(booking => booking.id !== bookingId));
+//     } else {
+//       const error = await response.json();
+//       console.log(error);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// const handleDelete = async (bookingId) => {
+//   if (!bookingId) {
+//     console.error('Invalid booking ID:', bookingId);
+//     return;
+//   }
+
+//   try {
+//     const response = await fetch(`/bookings/${bookingId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Authorization': `Bearer ${localStorage.getItem('token')}`
+//       }
+//     });
+//     if (response.ok) {
+//       setBookings(bookings.filter(booking => booking.id !== bookingId));
+//     } else {
+//       const error = await response.json();
+//       console.log(error);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// const handleDelete = async (bookingId) => {
+//   if (!bookingId) {
+//     console.error('Invalid booking ID:', bookingId);
+//     return;
+//   }
+
+//   try {
+//     const response = await fetch(`/bookings/${bookingId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Authorization': `Bearer ${localStorage.getItem('token')}`
+//       }
+//     });
+//     if (response.ok) {
+//       setBookings(bookings.filter(booking => booking.id !== bookingId));
+//     } else {
+//       const error = await response.json();
+//       console.log(error);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+const handleDelete = async (bookingId) => {
+  if (!bookingId) {
+    console.error('Invalid booking ID:', bookingId);
+    return;
+  }
+
+  try {
+    const response = await fetch(`/bookings/${bookingId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${('token')}`
+      }
+    });
+    if (response.ok) {
+      setBookings(bookings.filter(booking => booking.id !== bookingId));
+    } else {
+      const error = await response.json();
+      console.log(error);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 
 const contextData ={
     bookings,
     createBooking,
+    handleDelete
 }
     return(
+
         <>
         <BookingContext.Provider value ={contextData} >
         {children}

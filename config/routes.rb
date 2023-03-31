@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   # root "articles#index"
  
   resources :reviews, only: [:index, :show, :create, :update, :destroy]
-  resources :bookings, only: [:index, :show, :create]
+  resources :bookings, only: [:index, :show, :create,:destroy]
   resources :users, only: [:create]
+  delete '/bookings/:id', to: 'bookings#destroy'
   post "/login", to: "users#login"
   delete "/logout", to: "users#logout"
   #

@@ -16,7 +16,7 @@ export const BookingContext = createContext({
 function BookingProvider({children}){
     // const navigate = useNavigate()
     const [bookings, setBookings] = useState()
-    const [change, setOnChange] = useState(false)
+    
     const { token, user } = useContext(AuthContext);
     const navigate = useNavigate();
 //Adding bookings

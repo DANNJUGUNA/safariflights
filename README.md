@@ -6,6 +6,8 @@ Authors:
 - Minneh Waithira
 - Mercy Nyambura Kariuki
 
+License: MIT
+
 # About
  
 Safari Flights is a regional airline that specializes in providing convenient and affordable air travel services to its customers. With its headquarters located in the heart of the African savannah, Safari Flights offers a unique flying experience that allows passengers to take in the breathtaking scenery from above. 

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../../context/Authcontext'
 const Navbar = () => {
 
-  const{user}=useContext(AuthContext)
+  const{user,logout}=useContext(AuthContext)
+  const handleOnclick = () => {logout()}
   return (
     <nav className=' mx-4 pb-1 flex flex-wrap justify-between items-center px-5 min-h-[15vh] border-b-2 border-white'  >
         {/* {log} */}
@@ -21,7 +21,7 @@ const Navbar = () => {
             {user? 
             <>
              <Link to='/bookings'>Bookings</Link>
-             <Link to='/logout'> Logout</Link>
+             <Link onClick={handleOnclick} to='/'> Logout</Link>
              </>
              :
              <>

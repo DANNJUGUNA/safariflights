@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 // import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Authcontext';
+import Swal from 'sweetalert2';
 
 
 
@@ -36,9 +37,13 @@ const createBooking = async (flight_id) => {
       if (!response.ok) {
         throw new Error('Error booking flight');
       }
+      else{Swal.fire({
+        icon: 'success',
+        title: 'Booked successfully',
+      })}
+      
+      
 
-      const data = await response.json();
-      return data;
     } catch (error) {
       console.error(error.message);
       throw error;

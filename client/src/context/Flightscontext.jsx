@@ -1,33 +1,44 @@
-import React ,{useContext,useEffect,useState,createContext}from 'react'
+
+import React, { createContext, useEffect, useState } from 'react';
+
 export const FlightContext = createContext();
 
-const FlightsProvider=({children})=>{
-    const[flights,setFlights]=useState()
-   
-    useEffect(()=>{
-        fetch("/flights",{
-            method: "GET",
-            headers:{
-                "Content-Type": "application/json"
-            },
-        }
-        )
-        .then(res=>res.json())
-        .then(response=>{
-            setFlights(response)
-            
-        }
-        )
-    },[])
+const FlightsProvider = ({ children }) => {
+  const [flights, setFlights] = useState();
 
-    const contextData={
-        flights
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+    if (!token) {
+      return;
     }
-return (
-    <FlightContext.Provider value={contextData}>
-    {children}
- </FlightContext.Provider>
-)
 
-}
-export default FlightsProvider
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+
+    fetch('/flights', { headers })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setFlights(data))
+      .catch(error => {
+        console.error('There was a problem fetching flights:', error);
+      });
+  }, []);
+
+  const contextData = {
+    flights
+  };
+
+  return (
+    <FlightContext.Provider value={contextData}>
+      {children}
+    </FlightContext.Provider>
+  );
+};
+
+export default FlightsProvider;

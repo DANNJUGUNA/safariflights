@@ -88,12 +88,12 @@ const AuthProvider = ({children}) => {
         
     })
     }
-    useEffect(()=>{
-        fetch("/loggedin",{
+     useEffect(()=>{
+         fetch("/loggedin",{
             method: "GET",
-            headers:{
-                "Content-Type": "application/json"
-            },
+             headers:{
+                 "Content-Type": "application/json"
+             },
         }
         )
         .then(res=>res.json())

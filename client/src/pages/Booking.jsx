@@ -18,7 +18,7 @@ function Booking(){
              {/* <h2 className='flex font-serif mb-2 text-5xl font-bold tracking-tight text-white dark:text-white'>Flight Details</h2> */}
              
              {bookings.map((booking) => (
-           <div key={booking.id} className="max-w-screen-lg ml-10 mt-8 p-10 bg-blue-200 border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
+           <div key={booking.id} className="max-w-screen-lg ml-10 mt-8 p-10 bg-white border border-gray-200 rounded-lg shadow-md shadow-[#E99B04] dark:bg-gray-800 dark:border-gray-700">
            <div className="font-serif mb-4 text-3xl">
                <div className="flex items-center my-6">
                    <div className="font-bold mr-2 ml-7">Destination:</div>
@@ -38,7 +38,7 @@ function Booking(){
                </div>
                <div className="flex items-center my-6 ">
                    <div className="font-bold mr-2 ml-7">Cost:</div>
-                   <div className='ml-14'>{booking.flight.cost}</div>
+                   <div className='ml-14 text-green-700'>${booking.flight.cost}</div>
                </div>
            </div>
            <div className="flex justify-end">

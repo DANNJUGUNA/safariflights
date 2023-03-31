@@ -5,14 +5,17 @@ import { BookingContext } from '../context/Bookingcontext';
 function Booking(){
     const{user}=useContext(AuthContext)
     const{bookings}=useContext(BookingContext)
+    
     if (user&&bookings){
         console.log(bookings)
-        
+        console.log(user)
+
     }
     else{
         console.log("errors")
     }
-
+    
+    
     return(
        
         <div className='container mx-auto min-h-[80vh]'>

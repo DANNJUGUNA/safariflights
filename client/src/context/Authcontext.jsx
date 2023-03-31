@@ -1,7 +1,6 @@
-import React, { createContext, useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
 
 function loginUser(username, password) {
   return fetch('/login', {
@@ -24,7 +23,6 @@ function loginUser(username, password) {
   });
 }
 
-
 export const AuthContext = createContext({
   user: null,
   token: null,
@@ -38,8 +36,18 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedToken && storedUser) {
+      setUser(storedUser);
+      setToken(storedToken);
+    }
+  }, []);
+
   const logout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setUser(null);
     setToken(null);
   };
@@ -48,7 +56,7 @@ const AuthProvider = ({ children }) => {
     if (!userData.email || !userData.password) {
       throw new Error('Email and password are required.');
     }
-  
+
     try {
       const res = await fetch('/users', {
         method: 'POST',
@@ -59,13 +67,12 @@ const AuthProvider = ({ children }) => {
       });
       const data = await res.json();
       if (data.error) {
-        
         throw new Error(data.error);
-        
       } else {
         setToken(data.token);
         setUser(data.user);
-        
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
         Swal.fire({
           icon: 'success',
           title: 'User created successfully',
@@ -74,7 +81,7 @@ const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error.message);
-      
+
       Swal.fire({
         icon: 'error',
         title: 'Error creating user',
@@ -83,7 +90,7 @@ const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-  
+
   const login = async (username, password) => {
     if (user) {
       Swal.fire({
@@ -92,12 +99,13 @@ const AuthProvider = ({ children }) => {
       });
       navigate("/flight");
       return;
-      
     }
     try {
       const { user, token } = await loginUser(username, password);
       setUser(user);
       setToken(token);
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       Swal.fire({
         icon: 'success',
         title: 'Logged in successfully',
@@ -113,8 +121,7 @@ const AuthProvider = ({ children }) => {
       });
       throw error;
     }
-  }
-
+  };
 
   return (
     <AuthContext.Provider value={{ user, token, login, logout, signup }}>
@@ -123,8 +130,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthProvider ;
-
-
-
-
+export default AuthProvider;

@@ -55,21 +55,40 @@ const createBooking = async (flight_id) => {
 
   // Fetching bookings
   useEffect(() => {
-    if (token) {
-      fetch('/bookings', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((response) => {
-          setBookings(response);
-          console.log(response);
-        });
-    }
-  }, [change, token]);
+    const fetchBookings = async () => {
+      if (token) {
+        try {
+          const response = await fetch('/bookings', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error('Error fetching bookings');
+          }
+
+          const bookings = await response.json();
+          setBookings(bookings);
+          
+          
+
+        } catch (error) {
+          console.error(error.message);
+          throw error;
+        }
+      }
+    };
+
+    fetchBookings();
+  }, [token]);
+   
+
+
+
+
 
 
 

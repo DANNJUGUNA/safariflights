@@ -22,7 +22,7 @@ Whether you're traveling for business or leisure, Safari Flights offers a range 
 - Sign Up if you don't have an account
 - Login and view the flights available
 - Book a flight
-- View the flights you've booked fr9m your profile
+- View the flights you've booked from your profile
 
 # Deliverables
 

@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-// import {useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 
@@ -18,6 +18,7 @@ function BookingProvider({children}){
     const [bookings, setBookings] = useState()
     const [change, setOnChange] = useState(false)
     const { token, user } = useContext(AuthContext);
+    const navigate = useNavigate();
 //Adding bookings
 const createBooking = async (flight_id) => {
     if (!user) {
@@ -41,6 +42,7 @@ const createBooking = async (flight_id) => {
         icon: 'success',
         title: 'Booked successfully',
       })}
+      navigate("/bookings");
       
       
 

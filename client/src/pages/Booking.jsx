@@ -7,7 +7,7 @@ function Booking(){
     const{bookings}=useContext(BookingContext)
     if (user&&bookings){
         console.log(bookings)
-        console.log(user)
+        
     }
     else{
         console.log("errors")

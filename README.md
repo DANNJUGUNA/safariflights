@@ -41,4 +41,4 @@ The API should be available at <code>http://localhost:3000</code>
 
 To get started with the front-end
 1. Run <code>npm install</code>
-2. Run <code>npm start --prefix client</code> to start the server
+2. Run <code>npm start --prefix client</code> to start the front-end server

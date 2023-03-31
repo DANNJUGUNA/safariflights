@@ -34,7 +34,7 @@ const Login = () => {
         {/* <p className="text-red-500 text-xs italic">Please enter your password</p> */}
       </div>
       <div className="flex items-center flex-col">
-      <a href="#" className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800 mb-2">Forgot Password?</a>
+      <a href='#signup' className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800 mb-2">Forgot Password?</a>
         <button disabled={!password||!username} className="bg-[#160194] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
     
         <h6>Don't have an account?<Link to="/signup" className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800">Sigup</Link></h6>

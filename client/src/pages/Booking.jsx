@@ -1,12 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/Authcontext';
-import { BookingsContext } from '../context/Bookingcontext';
+import { BookingContext } from '../context/Bookingcontext';
 function Booking(){
     const{user}=useContext(AuthContext)
-    const{bookings}=useContext(BookingsContext)
+    const{bookings}=useContext(BookingContext)
     if (user&&bookings){
         console.log(bookings)
+        console.log(user)
     }
     else{
         console.log("errors")

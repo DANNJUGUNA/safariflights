@@ -15,10 +15,10 @@ function Booking(){
     return(
        
         <div className='container mx-auto min-h-[80vh]'>
-             {/* <h2 className='flex font-serif mb-2 text-5xl font-bold tracking-tight text-white dark:text-white'>Flight Details</h2> */}
+            
              
-             {bookings.map((booking) => (
-           <div key={booking.id} className="max-w-screen-lg ml-10 mt-8 p-10 bg-white border border-gray-200 rounded-lg shadow-md shadow-[#E99B04] dark:bg-gray-800 dark:border-gray-700">
+             {bookings && bookings.map((booking,index) => (
+           <div key={index} className="max-w-screen-lg ml-10 mt-8 p-10 bg-white border border-gray-200 rounded-lg shadow-md shadow-[#E99B04] dark:bg-gray-800 dark:border-gray-700">
            <div className="font-serif mb-4 text-3xl">
                <div className="flex items-center my-6">
                    <div className="font-bold mr-2 ml-7">Destination:</div>

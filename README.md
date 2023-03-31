@@ -1,4 +1,12 @@
 # Safari Flights
+
+Authors: 
+- Dan Njuguna
+- Leah Wanjiku
+- Minneh Waithira
+- Mercy Nyambura Kariuki
+
+# About
  
 Safari Flights is a regional airline that specializes in providing convenient and affordable air travel services to its customers. With its headquarters located in the heart of the African savannah, Safari Flights offers a unique flying experience that allows passengers to take in the breathtaking scenery from above. 
  
@@ -13,6 +21,11 @@ Whether you're traveling for business or leisure, Safari Flights offers a range 
 - Login and view the flights available
 - Book a flight
 - View the flights you've booked fr9m your profile
+
+# Deliverables
+
+The API is built using Ruby on Rails
+![domain diagram](safariflights(1).png)
 
 ## Setup
 

@@ -1,14 +1,51 @@
 class ApplicationController < ActionController::API
-  include ActionController::Cookies
-  before_action :authorize
+  before_action :authorized
 
-
-  private
-  def authorize
-      current_user=User.find_by(id: session[:user_id])
-      render json:{error: ["not authorized"]},status: :unauthorized unless current_user
+  def encode_token(payload)
+    # should store secret in env variable
+    JWT.encode(payload, 'my_s3cr3t')
   end
-    
 
+  def auth_header
+    # { Authorization: 'Bearer <token>' }
+    request.headers['Authorization']
+  end
 
+  def decoded_token
+    if auth_header
+      token = auth_header.split(' ')[1]
+      # header: { 'Authorization': 'Bearer <token>' }
+      begin
+        JWT.decode(token, 'my_s3cr3t', true, algorithm: 'HS256')
+      rescue JWT::DecodeError
+        nil
+      end
+    end
+  end
+
+  def current_user
+    if decoded_token
+      user_id = decoded_token[0]['user_id']
+      @user = User.find_by(id: user_id)
+    end
+  end
+
+  def logged_in?
+    !!current_user
+  end
+
+  def authorized(booking_id)
+    booking = Booking.find(booking_id)
+    unless current_user_bookings.include?(booking)
+      render json: { error: 'You are not authorized to access this booking' }, status: :unauthorized
+    end
+  end
+
+  def current_user_bookings
+    current_user.bookings
+  end
+private
+  def authorized
+    render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+  end
 end

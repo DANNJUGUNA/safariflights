@@ -42,7 +42,7 @@ User.create(username: 'Kamala Khan', email: 'kamalakhan@gmail.com', password_dig
 User.create(username: 'Gwen Stacy', email: 'gwenstacy@gmail.com', password_digest: 'Uuyg68/*_09KH')
 User.create(username: 'Doreen Green', email: 'doreengreen@gmail.com', password_digest: 'sY7HFVjng*_vc8')
 User.create(username: 'Collins Malin', email: 'malincollins@gmail.com', password_digest: 'shjkbfvggvb')
-User.create(username: 'Jane Collins', email: 'janecollins@gmail.com', password_digest: 's532ffjkh')
+User.create(username: 'Jane', email: 'jane@gmail.com', password_digest: 's532ffjkh')
 
 Review.create(user_id:1, rating: 3.9)
 Review.create(user_id:2, rating: 4.9)

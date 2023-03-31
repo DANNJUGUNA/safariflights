@@ -1,73 +1,71 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {useNavigate } from 'react-router-dom';
-import Swal from "sweetalert2"
-
-
-export const BookingsContext = createContext();
+// import {useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/Authcontext';
 
 
 
-function BookingsProvider({children}){
-    const navigate = useNavigate()
+
+export const BookingContext = createContext({
+    createBooking: () => {},
+  });//
+
+
+
+
+function BookingProvider({children}){
+    // const navigate = useNavigate()
     const [bookings, setBookings] = useState()
     const [change, setOnChange] = useState(false)
+    const { token, user } = useContext(AuthContext);
 //Adding bookings
-const AddBookings = (flight_id, user_id) =>{
-fetch ("/bookings",{
-    method: "POST",
-    headers:{
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        user_id, flight_id
-    })
-})
-.then(response =>response.json())
-.then(response =>{
-    console.log("add bookings",response)
-if (response.errors){
-    Swal.fire({
-        icon: 'error',
-        title: "Sorry...",
-        text: response.errors,
-    })
-}else if(response.sucess){
-    Swal.fire({
-        position: 'center',
-        icon: 'Booked successfully',
-        title: response.success,
-        timer: 1500
-    })
-    setOnChange (!change)
-}else{
-    Swal.fire({
-        icon: 'Error',
-        title: "Something went wrong",
-    })
-}
-    
-})
+const createBooking = async (flight_id) => {
+    if (!user) {
+      throw new Error('You must be logged in to book a flight.');
+    }
 
-}
+    try {
+      const response = await fetch('/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ user_id:user.id, flight_id:flight_id }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error booking flight');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error.message);
+      throw error;
+    }
+  };
 
 
+  // Fetching bookings
+  useEffect(() => {
+    if (token) {
+      fetch('/bookings', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          setBookings(response);
+          console.log(response);
+        });
+    }
+  }, [change, token]);
 
 
-//fetching bookings
-    useEffect(()=>{
-        fetch ("/bookings",{
-            method: "GET",
-            headers:{
-                "Content-Type": "application/json"
-            },
-        })
-        .then(res=>res.json())
-        .then(response=>{
-            setBookings(response)
-            console.log(response)
-        }
-        )
-    }, [change])
+
 
 //Deleting a booking
 
@@ -75,14 +73,14 @@ if (response.errors){
 
 const contextData ={
     bookings,
-    AddBookings
+    createBooking,
 }
     return(
         <>
-        <BookingsContext.Provider value ={contextData} >
+        <BookingContext.Provider value ={contextData} >
         {children}
-        </BookingsContext.Provider>
+        </BookingContext.Provider>
         </>
     )
 }
-export default BookingsProvider
+export default BookingProvider

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/Authcontext'
 
 const Login = () => {
@@ -8,8 +9,7 @@ const Login = () => {
   const{login}=useContext(AuthContext)
   const[username,setUsername]=useState('')
   const[password,setPassword]=useState('')
-console.log(username)
-console.log(password)
+
   const handleSubmit = (e)=>{
     // send Data to rails
     e.preventDefault()
@@ -34,10 +34,10 @@ console.log(password)
         {/* <p className="text-red-500 text-xs italic">Please enter your password</p> */}
       </div>
       <div className="flex items-center flex-col">
-      <a href="#" className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800 mb-2">Forgot Password?</a>
+      <a href='#signup' className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800 mb-2">Forgot Password?</a>
         <button disabled={!password||!username} className="bg-[#160194] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
-        <h6>Don't have an account? <a href="#" className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800">Signup</a></h6>
-
+    
+        <h6>Don't have an account?<Link to="/signup" className="inline-block align-baseline font-bold text-sm text-[#160194] hover:text-blue-800">Sigup</Link></h6>
       </div>
       <p className="font-bold text-center text-gray-500 text-xs mt-3 mb-3 p-3">&copy;2023 SAFARI<span className='text-[#E99B04]'>FLIGHTS</span> All rights reserved.</p>
     </form>

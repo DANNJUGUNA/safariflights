@@ -9,10 +9,17 @@ const Signup = () => {
   const[email,setEmail]=useState("")
   const[password,setPassword]=useState("")
   
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    signup(username,email,password)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
+      alert('Please enter all required fields');
+      return;
+    }
+    const userData = { email, password, username };
+    signup(userData);
+  };
+  
+  
   return (
     <div className='bg-white py-4 mx-5 rounded-3xl mb-1 mt-1 w-[90%] ml-auto mr-auto'>
       <div className='bg-[#160194] opacity-80 w-[500px] h-[650px] rounded-3xl flex flex-col items-center ml-auto mr-auto mt-2 p-20'>

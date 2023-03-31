@@ -25,7 +25,7 @@ Whether you're traveling for business or leisure, Safari Flights offers a range 
 # Deliverables
 
 The API is built using Ruby on Rails
-![domain diagram](safariflights(1).png)
+![demo](safariflights(1).png)
 
 ## Setup
 

@@ -6,6 +6,7 @@ import { FlightContext } from '../context/Flightscontext';
 function Flight () {
   const{flights}=useContext(FlightContext)
   const {user}=useContext(AuthContext)
+  console.log('user:', user);
   return(
  <div>
    <p className='flex items-center justify-center text-2xl mt-2 font-bold text-white underline underline-offset-8'>
@@ -24,7 +25,7 @@ function Flight () {
               <p className="text-lg font-bold mb-2 ">Cost: <span className=' text-green-600 font-normal pl-2 text-lg '>${flight.cost}</span></p>
               <div className=' flex items-center justify-center'>
                 { 
-                user && user.loggedin?
+                user && user?
               <button type="button" className="focus:outline-none text-black bg-[#E99B04] hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-1 dark:bg-yellow-600 dark:hover:bg-yellow-600 dark:focus:ring-yellow-700">Book Now</button>
               :
               <p>For you to book the flight you have to log in </p>

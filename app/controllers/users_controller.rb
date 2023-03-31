@@ -25,22 +25,7 @@ skip_before_action :authorized, only: [:create, :login]
     session.delete(:user_id)
     render json: { message: 'Logged out successfully' }
   end
-  # def bookings
-  #   @bookings = current_user.bookings
-  #   if @bookings.empty?
-  #     render json: { message: 'No booked flights' }
-  #   else
-  #     render json: { bookings: @bookings.as_json(include: :flight) }
-  #   end
-  # end
-  # def bookings
-  #   if logged_in?
-  #     @bookings = current_user.bookings
-  #     render json: { bookings: @bookings }
-  #   else
-  #     render json: { message: 'Please log in' }, status: :unauthorized
-  #   end
-  # end
+
 
 
   private

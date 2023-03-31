@@ -8,8 +8,7 @@ const Login = () => {
   const{login}=useContext(AuthContext)
   const[username,setUsername]=useState('')
   const[password,setPassword]=useState('')
-console.log(username)
-console.log(password)
+
   const handleSubmit = (e)=>{
     // send Data to rails
     e.preventDefault()

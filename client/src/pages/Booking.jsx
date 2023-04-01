@@ -1,23 +1,14 @@
 import React from 'react';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../context/Authcontext';
 import { BookingContext } from '../context/Bookingcontext';
 function Booking(){
-    const{user}=useContext(AuthContext)
+   
     const{bookings,handleDelete}=useContext(BookingContext);
     const [stateBookings, setStateBookings] = useState(bookings ? bookings : []);
     
-    if (user&&bookings){
-        console.log(bookings)
-        console.log(user)
-
-    }
-    else{
-        console.log("errors")
-    }
     
     const handleCancelBooking = (bookingId) => {
-        console.log('Deleting booking with ID:', bookingId);
+        
         handleDelete(bookingId).then(() => {
           setStateBookings(stateBookings.filter((booking) => booking.id !== bookingId));
         });

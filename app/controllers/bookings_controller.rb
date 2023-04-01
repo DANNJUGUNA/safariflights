@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
     before_action :authorized
-   
     
+   
     def index
       if params[:cancel].present?
         booking = Booking.find_by(id: params[:cancel], user_id: current_user.id)

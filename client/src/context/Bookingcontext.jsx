@@ -1,24 +1,19 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
-// import {useNavigate } from 'react-router-dom';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Authcontext';
 
-
-
-
 export const BookingContext = createContext({
-    createBooking: () => {},
-  });//
+  createBooking: () => {},
+});
 
+function BookingProvider({ children }) {
+  const navigate = useNavigate();
+  const [bookings, setBookings] = useState();
+  const [change, setOnChange] = useState(false);
+  const { token, user } = useContext(AuthContext);
 
-
-
-function BookingProvider({children}){
-    // const navigate = useNavigate()
-    const [bookings, setBookings] = useState()
-    const [change, setOnChange] = useState(false)
-    const { token, user } = useContext(AuthContext);
-//Adding bookings
-const createBooking = async (flight_id) => {
+  // Adding bookings
+  const createBooking = async (flight_id) => {
     if (!user) {
       throw new Error('You must be logged in to book a flight.');
     }
@@ -28,9 +23,9 @@ const createBooking = async (flight_id) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ user_id:user.id, flight_id:flight_id }),
+        body: JSON.stringify({ user_id: user.id, flight_id: flight_id }),
       });
 
       if (!response.ok) {
@@ -38,13 +33,15 @@ const createBooking = async (flight_id) => {
       }
 
       const data = await response.json();
+      setTimeout(() => navigate('/bookings'), 1000);
+    
+      setOnChange(!change);
       return data;
     } catch (error) {
       console.error(error.message);
       throw error;
     }
   };
-
 
   // Fetching bookings
   useEffect(() => {
@@ -53,7 +50,7 @@ const createBooking = async (flight_id) => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((res) => res.json())
@@ -64,135 +61,49 @@ const createBooking = async (flight_id) => {
     }
   }, [change, token]);
 
+  
 
-
-
-//Deleting a booking
-// const handleDelete = async (bookingId) => {
-//   try {
-//     const response = await fetch(`/bookings/${bookingId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Authorization': `Bearer ${localStorage.getItem('token')}`
-//       }
-//     });
-//     if (response.ok) {
-//       setBookings(bookings.filter(booking => booking.id !== bookingId));
-//     } else {
-//       const error = await response.json();
-//       console.log(error);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// const handleDelete = async (bookingId) => {
-//   if (!user) {
-//     throw new Error('You must be logged in to delete a booking.');
-//   }
-
-//   try {
-//     const response = await fetch(`/bookings/${bookingId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Authorization': `Bearer ${token}`
-//       }
-//     });
-//     if (response.ok) {
-//       setBookings(bookings.filter(booking => booking.id !== bookingId));
-//     } else {
-//       const error = await response.json();
-//       console.log(error);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const handleDelete = async (bookingId) => {
-//   if (!bookingId) {
-//     console.error('Invalid booking ID:', bookingId);
-//     return;
-//   }
-
-//   try {
-//     const response = await fetch(`/bookings/${bookingId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Authorization': `Bearer ${localStorage.getItem('token')}`
-//       }
-//     });
-//     if (response.ok) {
-//       setBookings(bookings.filter(booking => booking.id !== bookingId));
-//     } else {
-//       const error = await response.json();
-//       console.log(error);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// const handleDelete = async (bookingId) => {
-//   if (!bookingId) {
-//     console.error('Invalid booking ID:', bookingId);
-//     return;
-//   }
-
-//   try {
-//     const response = await fetch(`/bookings/${bookingId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Authorization': `Bearer ${localStorage.getItem('token')}`
-//       }
-//     });
-//     if (response.ok) {
-//       setBookings(bookings.filter(booking => booking.id !== bookingId));
-//     } else {
-//       const error = await response.json();
-//       console.log(error);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-const handleDelete = async (bookingId) => {
-  if (!bookingId) {
-    console.error('Invalid booking ID:', bookingId);
-    return;
-  }
-
-  try {
-    const response = await fetch(`/bookings/${bookingId}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${('token')}`
+  const handleDelete = async (bookingId) => {
+    if (!bookingId) {
+      console.error('Invalid booking ID:', bookingId);
+      return;
+    }
+  
+    try {
+      const response = await fetch(`/bookings/${bookingId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      if (response.ok) {
+        setOnChange(!change);
+        setBookings(bookings.filter((booking) => booking.id !== bookingId));
+      } else {
+        const error = await response.json();
+        console.log(error);
       }
-    });
-    if (response.ok) {
-      setBookings(bookings.filter(booking => booking.id !== bookingId));
-    } else {
-      const error = await response.json();
+    } catch (error) {
       console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-};
+  };
+  
 
-
-
-const contextData ={
+  const contextData = {
     bookings,
     createBooking,
-    handleDelete
-}
-    return(
+    handleDelete,
+  };
 
-        <>
-        <BookingContext.Provider value ={contextData} >
+
+  return (
+    <>
+      <BookingContext.Provider value={contextData}>
         {children}
-        </BookingContext.Provider>
-        </>
-    )
+      </BookingContext.Provider>
+    </>
+  );
 }
-export default BookingProvider
+
+export default BookingProvider;

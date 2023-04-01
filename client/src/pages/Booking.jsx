@@ -1,10 +1,11 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../context/Authcontext';
 import { BookingContext } from '../context/Bookingcontext';
 function Booking(){
     const{user}=useContext(AuthContext)
-    const{bookings}=useContext(BookingContext)
+    const{bookings,handleDelete}=useContext(BookingContext);
+    const [stateBookings, setStateBookings] = useState(bookings ? bookings : []);
     
     if (user&&bookings){
         console.log(bookings)
@@ -15,6 +16,12 @@ function Booking(){
         console.log("errors")
     }
     
+    const handleCancelBooking = (bookingId) => {
+        console.log('Deleting booking with ID:', bookingId);
+        handleDelete(bookingId).then(() => {
+          setStateBookings(stateBookings.filter((booking) => booking.id !== bookingId));
+        });
+      };
     
     return(
        
@@ -46,7 +53,9 @@ function Booking(){
                </div>
            </div>
            <div className="flex justify-end">
-               <button type="button" className="px-5 py-2.5 mr-2 mb-2 text-sm font-medium text-black bg-[#E99B04] rounded-lg focus:outline-none hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-400 dark:bg-yellow-600 dark:hover:bg-yellow-600 dark:focus:ring-yellow-700">
+               <button type="button" className="px-5 py-2.5 mr-2 mb-2 text-sm font-medium text-black bg-[#E99B04] rounded-lg focus:outline-none hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-400 dark:bg-yellow-600 dark:hover:bg-yellow-600 dark:focus:ring-yellow-700"
+               onClick={() => booking.id && handleCancelBooking(booking.id)}
+               >
                    Cancel Booking
                </button>
            </div>

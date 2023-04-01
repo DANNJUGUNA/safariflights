@@ -94,12 +94,37 @@ const createBooking = async (flight_id) => {
 
 
 //Deleting a booking
+const handleDelete = async (bookingId) => {
+  if (!bookingId) {
+    console.error('Invalid booking ID:', bookingId);
+    return;
+  }
+
+  try {
+    const response = await fetch(`/bookings/${bookingId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+
+      }
+    });
+    if (response.ok) {
+      setBookings(bookings.filter(booking => booking.id !== bookingId));
+    } else {
+      const error = await response.json();
+      console.log(error);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 
 const contextData ={
     bookings,
     createBooking,
+    handleDelete,
 }
     return(
         <>

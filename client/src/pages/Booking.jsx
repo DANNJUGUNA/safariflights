@@ -17,7 +17,6 @@ function Booking(){
     return(
        
         <div className='container mx-auto min-h-[80vh]'>
-            
              
              {bookings && bookings.map((booking,index) => (
            <div key={index} className="max-w-screen-lg ml-10 mt-8 p-10 bg-white border border-gray-200 rounded-lg shadow-md shadow-[#E99B04] dark:bg-gray-800 dark:border-gray-700">

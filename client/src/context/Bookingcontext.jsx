@@ -3,20 +3,13 @@ import {useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 
-
-
-
 export const BookingContext = createContext({
     createBooking: () => {},
-  });//
-
-
-
+  });
 
 function BookingProvider({children}){
     // const navigate = useNavigate()
     const [bookings, setBookings] = useState()
-    
     const { token, user } = useContext(AuthContext);
     const navigate = useNavigate();
 //Adding bookings
@@ -85,14 +78,6 @@ const createBooking = async (flight_id) => {
     fetchBookings();
   }, [token]);
    
-
-
-
-
-
-
-
-
 //Deleting a booking
 const handleDelete = async (bookingId) => {
   if (!bookingId) {

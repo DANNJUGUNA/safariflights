@@ -110,9 +110,17 @@ const handleDelete = async (bookingId) => {
     });
     if (response.ok) {
       setBookings(bookings.filter(booking => booking.id !== bookingId));
+      Swal.fire({
+        icon: 'success',
+        title: 'Booking deleted successfully',
+      });
     } else {
       const error = await response.json();
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error deleting booking',
+        text: error.message,
+      });
     }
   } catch (error) {
     console.log(error);

@@ -12,6 +12,7 @@ function BookingProvider({children}){
     const [bookings, setBookings] = useState()
     const { token, user } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [change, setOnChange] = useState(false);
 //Adding bookings
 const createBooking = async (flight_id) => {
     if (!user) {
@@ -35,7 +36,9 @@ const createBooking = async (flight_id) => {
         icon: 'success',
         title: 'Booked successfully',
       })}
-      navigate("/bookings");
+      setTimeout(() => navigate('/bookings'), 1000);
+
+      setOnChange(!change);
       
       
 
@@ -76,7 +79,7 @@ const createBooking = async (flight_id) => {
     };
 
     fetchBookings();
-  }, [token]);
+  }, [change, token]);
    
 //Deleting a booking
 const handleDelete = async (bookingId) => {

@@ -35,6 +35,7 @@ const createBooking = async (flight_id) => {
       else{Swal.fire({
         icon: 'success',
         title: 'Booked successfully',
+        text: 'You will receive a notification when your flight is due',
       })}
       setTimeout(() => navigate('/bookings'), 1000);
 

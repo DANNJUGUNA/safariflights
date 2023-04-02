@@ -33,8 +33,29 @@ Flight.create([
         destination: "Kisumu",
         from: "Mombasa",
         duration: "1hr 20 min",
-        departure: "14:00pm",
+        departure: "2:00pm",
         cost:15000
+    },
+    {
+        destination: "Moyale",
+        from: "Eldoret",
+        duration: "1hr 20 min",
+        departure: "2:00pm",
+        cost:20000
+    },
+    {
+      destination: "Mombasa",
+        from: "Dubai",
+        duration: "6hr 20 min",
+        departure: "12:00am",
+        cost:100000  
+    },
+    {
+        destination: "Nairobi",
+        from: "Dar es Salaam",
+        duration: "1hr 20 min",
+        departure: "2:00pm",
+        cost:30000
     }
 ])
 

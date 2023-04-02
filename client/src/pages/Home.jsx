@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
 import { Link } from 'react-router-dom';
-
+// import { ReviewsContext } from '../context/Reviewscontext';
+// import StarRating from './StarRating'
 const Home = () => {
+  //const { averageRating } = useContext(ReviewsContext)
+
   return (
     <div className=' mx-5 pt-2'>
     {/* {text} */}
@@ -25,7 +28,20 @@ const Home = () => {
         Get Started
       </button>
     </Link>
+
     </div>
+    {/* reviews to be added */}
+   <>
+    <div className='flex justify-center'>
+      {/* <div>
+       
+      <StarRating rating={averageRating} />
+        
+      </div> */}
+    </div>
+</>
+
+
   </div>
   
 

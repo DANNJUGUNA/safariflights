@@ -2,8 +2,11 @@ class ReviewsController < ApplicationController
   before_action :authorized
 
   def index 
-    reviews = Review.all
-    render json: reviews
+    
+      reviews = Review.all
+      average_rating = reviews.average(:rating)
+      average_rating = average_rating ? average_rating.round : nil 
+      render json: { reviews: reviews, average_rating: average_rating }
   end
   def show
     review = current_user.review
@@ -12,6 +15,7 @@ class ReviewsController < ApplicationController
     else
       render json: { error: "Review not found" }, status: :not_found
     end
+    
   end
   
   def create

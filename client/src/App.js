@@ -10,6 +10,9 @@ import Booking from './pages/Booking'
 import AuthProvider from "./context/Authcontext";
 import FlightsProvider from "./context/Flightscontext";
 import BookingsProvider from "./context/Bookingcontext";
+import ReviewsProvider from "./context/Reviewscontext";
+
+
 
 function App() {
   return (
@@ -17,6 +20,8 @@ function App() {
       <AuthProvider>
         <FlightsProvider>
           <BookingsProvider>
+            
+            <ReviewsProvider>
       <Routes>
           <Route path="/" element={<Layout/>}>
             <Route index element={<Home/>}/>
@@ -25,8 +30,11 @@ function App() {
             <Route path="/flight" element={<Flight/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login/>}/>
+            
+            
           </Route>
       </Routes>
+      </ReviewsProvider>
       </BookingsProvider>
       </FlightsProvider>
       </AuthProvider>

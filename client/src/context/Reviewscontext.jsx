@@ -6,8 +6,8 @@ export const ReviewsContext = createContext();
 const ReviewsProvider = ({ children }) => {
     const [reviews, setReviews] = useState([]);
     const [averageRating, setAverageRating] = useState(null);
-    const { token, user } = useContext(AuthContext);
-    const [change, setOnChange] = useState(false);
+    const { token} = useContext(AuthContext);
+    const [change] = useState(false);
    
     
     useEffect(() => {
